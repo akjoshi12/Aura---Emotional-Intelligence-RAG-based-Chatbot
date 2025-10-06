@@ -57,8 +57,9 @@ To make Aura more robust and responsible, the architecture includes plans for ad
 
 # Architecture
 
+Architecture Diagram
 
-
+![Architecture Diagram](aura_architecture_diagram.svg)
 
 
 ## Tech Stack
