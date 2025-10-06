@@ -55,6 +55,12 @@ To make Aura more robust and responsible, the architecture includes plans for ad
   * **Agentic Fallback (Web Search):** If the vector database returns low-confidence results, the system can pivot to an external tool like a web search API to find relevant articles or information, ensuring the user still receives a helpful response.
   * **Critical Safety Protocol:** The system includes a severity detection layer. If a user's message contains high-risk keywords (e.g., related to self-harm), the standard RAG flow is bypassed. The chatbot immediately provides a pre-defined, safe response containing helpline numbers and other professional resources.
 
+# Architecture
+
+
+
+
+
 ## Tech Stack
 
   * **Application Framework:** Streamlit
