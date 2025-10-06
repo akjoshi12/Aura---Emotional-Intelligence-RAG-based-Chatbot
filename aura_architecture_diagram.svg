@@ -1,0 +1,190 @@
+<svg viewBox="0 0 1200 900" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#4A5568" />
+    </marker>
+    <filter id="shadow">
+      <feDropShadow dx="2" dy="2" stdDeviation="3" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+  
+  <!-- Title -->
+  <text x="600" y="35" font-size="28" font-weight="bold" text-anchor="middle" fill="#2D3748">Aura: AI Wellness Chatbot Architecture</text>
+  
+  <!-- Stage 1: Data Ingestion -->
+  <g filter="url(#shadow)">
+    <rect x="50" y="80" width="250" height="180" rx="10" fill="#EBF8FF" stroke="#3182CE" stroke-width="2"/>
+    <text x="175" y="105" font-size="16" font-weight="bold" text-anchor="middle" fill="#2C5282">Stage 1: Data Ingestion</text>
+    
+    <rect x="70" y="125" width="210" height="45" rx="5" fill="#FFFFFF" stroke="#3182CE" stroke-width="1"/>
+    <text x="175" y="145" font-size="13" text-anchor="middle" fill="#2D3748" font-weight="bold">Raw Conversations</text>
+    <text x="175" y="160" font-size="11" text-anchor="middle" fill="#4A5568">(CSV/JSON)</text>
+    
+    <path d="M 175 170 L 175 185" stroke="#4A5568" stroke-width="2" marker-end="url(#arrowhead)"/>
+    
+    <rect x="70" y="190" width="210" height="55" rx="5" fill="#4299E1" stroke="#2B6CB0" stroke-width="1"/>
+    <text x="175" y="210" font-size="13" text-anchor="middle" fill="#FFFFFF" font-weight="bold">build_database.py</text>
+    <text x="175" y="225" font-size="10" text-anchor="middle" fill="#E6FFFA">• Clean & Parse Text</text>
+    <text x="175" y="238" font-size="10" text-anchor="middle" fill="#E6FFFA">• Create Chunks</text>
+  </g>
+  
+  <!-- Stage 2: Vector Database -->
+  <g filter="url(#shadow)">
+    <rect x="50" y="300" width="250" height="220" rx="10" fill="#F0FFF4" stroke="#38A169" stroke-width="2"/>
+    <text x="175" y="325" font-size="16" font-weight="bold" text-anchor="middle" fill="#22543D">Stage 2: Vector Database</text>
+    
+    <rect x="70" y="345" width="210" height="55" rx="5" fill="#48BB78" stroke="#2F855A" stroke-width="1"/>
+    <text x="175" y="362" font-size="13" text-anchor="middle" fill="#FFFFFF" font-weight="bold">Embedding Model</text>
+    <text x="175" y="377" font-size="10" text-anchor="middle" fill="#F0FFF4">BAAI/bge-large-en-v1.5</text>
+    <text x="175" y="390" font-size="9" text-anchor="middle" fill="#F0FFF4">Text → Vector Embeddings</text>
+    
+    <path d="M 175 400 L 175 415" stroke="#4A5568" stroke-width="2" marker-end="url(#arrowhead)"/>
+    
+    <rect x="70" y="420" width="210" height="85" rx="5" fill="#FFFFFF" stroke="#38A169" stroke-width="1"/>
+    <text x="175" y="440" font-size="13" text-anchor="middle" fill="#22543D" font-weight="bold">ChromaDB</text>
+    <text x="175" y="458" font-size="10" text-anchor="middle" fill="#4A5568">Persistent Vector Store</text>
+    <text x="175" y="473" font-size="9" text-anchor="middle" fill="#718096">• Embeddings</text>
+    <text x="175" y="486" font-size="9" text-anchor="middle" fill="#718096">• Text Chunks</text>
+    <text x="175" y="499" font-size="9" text-anchor="middle" fill="#718096">• Metadata</text>
+  </g>
+  
+  <!-- Arrow from Stage 1 to Stage 2 -->
+  <path d="M 175 260 L 175 300" stroke="#4A5568" stroke-width="3" marker-end="url(#arrowhead)"/>
+  
+  <!-- Stage 3: RAG System (Center) -->
+  <g filter="url(#shadow)">
+    <rect x="350" y="80" width="500" height="440" rx="10" fill="#FFF5F5" stroke="#E53E3E" stroke-width="3"/>
+    <text x="600" y="105" font-size="18" font-weight="bold" text-anchor="middle" fill="#742A2A">Stage 3: RAG System (Core Logic)</text>
+    
+    <!-- Retrieve -->
+    <rect x="375" y="130" width="450" height="90" rx="8" fill="#FED7D7" stroke="#C53030" stroke-width="2"/>
+    <text x="600" y="155" font-size="15" font-weight="bold" text-anchor="middle" fill="#742A2A">① RETRIEVE</text>
+    <text x="600" y="175" font-size="11" text-anchor="middle" fill="#4A5568">User Query → Embed → Search ChromaDB</text>
+    <text x="600" y="192" font-size="11" text-anchor="middle" fill="#4A5568">Returns: Top K Similar Conversational Chunks</text>
+    <text x="600" y="209" font-size="10" text-anchor="middle" fill="#718096" font-style="italic">(Semantic Similarity Search)</text>
+    
+    <path d="M 600 220 L 600 240" stroke="#4A5568" stroke-width="2" marker-end="url(#arrowhead)"/>
+    
+    <!-- Augment -->
+    <rect x="375" y="245" width="450" height="110" rx="8" fill="#FED7D7" stroke="#C53030" stroke-width="2"/>
+    <text x="600" y="268" font-size="15" font-weight="bold" text-anchor="middle" fill="#742A2A">② AUGMENT</text>
+    <text x="600" y="288" font-size="11" text-anchor="middle" fill="#4A5568">Build Context-Rich Prompt:</text>
+    <text x="600" y="305" font-size="10" text-anchor="middle" fill="#718096">• System Prompt (Aura's Persona)</text>
+    <text x="600" y="320" font-size="10" text-anchor="middle" fill="#718096">• Retrieved Examples (Hidden from User)</text>
+    <text x="600" y="335" font-size="10" text-anchor="middle" fill="#718096">• Conversation History</text>
+    <text x="600" y="350" font-size="10" text-anchor="middle" fill="#718096">• Current User Message</text>
+    
+    <path d="M 600 355 L 600 375" stroke="#4A5568" stroke-width="2" marker-end="url(#arrowhead)"/>
+    
+    <!-- Generate -->
+    <rect x="375" y="380" width="450" height="125" rx="8" fill="#FED7D7" stroke="#C53030" stroke-width="2"/>
+    <text x="600" y="403" font-size="15" font-weight="bold" text-anchor="middle" fill="#742A2A">③ GENERATE</text>
+    
+    <rect x="405" y="415" width="390" height="75" rx="5" fill="#FFFFFF" stroke="#E53E3E" stroke-width="1"/>
+    <text x="600" y="435" font-size="13" text-anchor="middle" fill="#2D3748" font-weight="bold">Local LLM (via Ollama)</text>
+    <text x="600" y="452" font-size="11" text-anchor="middle" fill="#4A5568">Model: llama3.1:70b</text>
+    <text x="600" y="467" font-size="10" text-anchor="middle" fill="#718096">Generates Empathetic Response</text>
+    <text x="600" y="482" font-size="10" text-anchor="middle" fill="#718096" font-style="italic">Based on Augmented Context</text>
+  </g>
+  
+  <!-- Arrow from ChromaDB to RAG -->
+  <path d="M 300 460 L 350 330" stroke="#4A5568" stroke-width="2" marker-end="url(#arrowhead)" stroke-dasharray="5,5"/>
+  <text x="315" y="390" font-size="10" fill="#4A5568" font-style="italic">Semantic</text>
+  <text x="315" y="402" font-size="10" fill="#4A5568" font-style="italic">Search</text>
+  
+  <!-- Stage 4: User Interface -->
+  <g filter="url(#shadow)">
+    <rect x="900" y="80" width="250" height="180" rx="10" fill="#FAF5FF" stroke="#805AD5" stroke-width="2"/>
+    <text x="1025" y="105" font-size="16" font-weight="bold" text-anchor="middle" fill="#44337A">Stage 4: User Interface</text>
+    
+    <rect x="920" y="125" width="210" height="125" rx="5" fill="#FFFFFF" stroke="#805AD5" stroke-width="1"/>
+    <text x="1025" y="147" font-size="13" text-anchor="middle" fill="#44337A" font-weight="bold">Streamlit Web App</text>
+    <text x="1025" y="168" font-size="11" text-anchor="middle" fill="#4A5568">• Chat Interface</text>
+    <text x="1025" y="185" font-size="11" text-anchor="middle" fill="#4A5568">• Conversation History</text>
+    <text x="1025" y="202" font-size="11" text-anchor="middle" fill="#4A5568">• User Input</text>
+    <text x="1025" y="219" font-size="11" text-anchor="middle" fill="#4A5568">• Disclaimer Display</text>
+    
+    <circle cx="1025" cy="233" r="8" fill="#9F7AEA"/>
+    <text x="1025" y="237" font-size="10" text-anchor="middle" fill="#FFFFFF" font-weight="bold">🧑</text>
+  </g>
+  
+  <!-- Bidirectional arrows between RAG and UI -->
+  <path d="M 850 200 L 900 200" stroke="#4A5568" stroke-width="3" marker-end="url(#arrowhead)"/>
+  <path d="M 900 240 L 850 240" stroke="#4A5568" stroke-width="3" marker-end="url(#arrowhead)"/>
+  <text x="875" y="195" font-size="10" text-anchor="middle" fill="#4A5568" font-weight="bold">Response</text>
+  <text x="875" y="258" font-size="10" text-anchor="middle" fill="#4A5568" font-weight="bold">Query</text>
+  
+  <!-- Advanced Features Section -->
+  <g filter="url(#shadow)">
+    <rect x="50" y="580" width="530" height="280" rx="10" fill="#FFFAF0" stroke="#DD6B20" stroke-width="2"/>
+    <text x="315" y="605" font-size="16" font-weight="bold" text-anchor="middle" fill="#7C2D12">Advanced Features & Safety</text>
+    
+    <!-- Agentic Fallback -->
+    <rect x="70" y="630" width="240" height="210" rx="8" fill="#FFFFFF" stroke="#ED8936" stroke-width="1"/>
+    <text x="190" y="652" font-size="13" text-anchor="middle" fill="#7C2D12" font-weight="bold">Agentic Fallback</text>
+    <text x="190" y="670" font-size="11" text-anchor="middle" fill="#4A5568" font-weight="bold">Low Confidence Check</text>
+    
+    <rect x="85" y="685" width="210" height="45" rx="5" fill="#FED7AA" stroke="#DD6B20" stroke-width="1"/>
+    <text x="190" y="703" font-size="10" text-anchor="middle" fill="#7C2D12">If similarity score &lt; threshold:</text>
+    <text x="190" y="718" font-size="10" text-anchor="middle" fill="#7C2D12">→ Trigger Web Search API</text>
+    
+    <path d="M 190 730 L 190 745" stroke="#4A5568" stroke-width="2" marker-end="url(#arrowhead)"/>
+    
+    <rect x="85" y="750" width="210" height="75" rx="5" fill="#FFFFFF" stroke="#ED8936" stroke-width="1"/>
+    <text x="190" y="767" font-size="10" text-anchor="middle" fill="#2D3748" font-weight="bold">External Tool</text>
+    <text x="190" y="783" font-size="9" text-anchor="middle" fill="#4A5568">Search relevant articles</text>
+    <text x="190" y="796" font-size="9" text-anchor="middle" fill="#4A5568">Provide informed response</text>
+    <text x="190" y="809" font-size="9" text-anchor="middle" fill="#4A5568">with sources</text>
+    
+    <!-- Critical Safety Protocol -->
+    <rect x="330" y="630" width="240" height="210" rx="8" fill="#FFFFFF" stroke="#C53030" stroke-width="2"/>
+    <text x="450" y="652" font-size="13" text-anchor="middle" fill="#742A2A" font-weight="bold">⚠️ Critical Safety</text>
+    <text x="450" y="670" font-size="11" text-anchor="middle" fill="#4A5568" font-weight="bold">Severity Detection</text>
+    
+    <rect x="345" y="685" width="210" height="55" rx="5" fill="#FED7D7" stroke="#C53030" stroke-width="1"/>
+    <text x="450" y="703" font-size="10" text-anchor="middle" fill="#742A2A">High-risk keywords detected:</text>
+    <text x="450" y="716" font-size="9" text-anchor="middle" fill="#742A2A">(self-harm, crisis language)</text>
+    <text x="450" y="730" font-size="10" text-anchor="middle" fill="#742A2A" font-weight="bold">⇓ BYPASS RAG ⇓</text>
+    
+    <path d="M 450 740 L 450 755" stroke="#C53030" stroke-width="3" marker-end="url(#arrowhead)"/>
+    
+    <rect x="345" y="760" width="210" height="65" rx="5" fill="#FC8181" stroke="#9B2C2C" stroke-width="1"/>
+    <text x="450" y="778" font-size="10" text-anchor="middle" fill="#FFFFFF" font-weight="bold">Safe Response Protocol</text>
+    <text x="450" y="793" font-size="9" text-anchor="middle" fill="#FFF5F5">• Crisis helpline numbers</text>
+    <text x="450" y="806" font-size="9" text-anchor="middle" fill="#FFF5F5">• Professional resources</text>
+    <text x="450" y="819" font-size="9" text-anchor="middle" fill="#FFF5F5">• Immediate support info</text>
+  </g>
+  
+  <!-- Tech Stack Box -->
+  <g filter="url(#shadow)">
+    <rect x="620" y="580" width="530" height="280" rx="10" fill="#EDF2F7" stroke="#4A5568" stroke-width="2"/>
+    <text x="885" y="605" font-size="16" font-weight="bold" text-anchor="middle" fill="#2D3748">Technology Stack</text>
+    
+    <rect x="645" y="625" width="240" height="220" rx="5" fill="#FFFFFF" stroke="#718096" stroke-width="1"/>
+    <text x="765" y="647" font-size="13" text-anchor="middle" fill="#2D3748" font-weight="bold">Core Technologies</text>
+    <text x="765" y="670" font-size="11" text-anchor="middle" fill="#4A5568">🖥️ <tspan font-weight="bold">Framework:</tspan> Streamlit</text>
+    <text x="765" y="690" font-size="11" text-anchor="middle" fill="#4A5568">🗄️ <tspan font-weight="bold">Vector DB:</tspan> ChromaDB</text>
+    <text x="765" y="710" font-size="11" text-anchor="middle" fill="#4A5568">🤖 <tspan font-weight="bold">LLM Host:</tspan> Ollama</text>
+    <text x="765" y="730" font-size="11" text-anchor="middle" fill="#4A5568">🔢 <tspan font-weight="bold">Embeddings:</tspan></text>
+    <text x="765" y="745" font-size="10" text-anchor="middle" fill="#718096">BAAI/bge-large-en-v1.5</text>
+    <text x="765" y="765" font-size="11" text-anchor="middle" fill="#4A5568">📊 <tspan font-weight="bold">Data:</tspan> Pandas</text>
+    <text x="765" y="785" font-size="11" text-anchor="middle" fill="#4A5568">🔥 <tspan font-weight="bold">ML:</tspan> PyTorch</text>
+    <text x="765" y="805" font-size="11" text-anchor="middle" fill="#4A5568">🧠 <tspan font-weight="bold">Model:</tspan> llama3.1:70b</text>
+    <text x="765" y="830" font-size="10" text-anchor="middle" fill="#718096" font-style="italic">Fully Local & Private</text>
+    
+    <rect x="905" y="625" width="230" height="220" rx="5" fill="#FFFFFF" stroke="#718096" stroke-width="1"/>
+    <text x="1020" y="647" font-size="13" text-anchor="middle" fill="#2D3748" font-weight="bold">Key Principles</text>
+    <text x="1020" y="673" font-size="11" text-anchor="middle" fill="#4A5568">✅ Privacy First</text>
+    <text x="1020" y="693" font-size="10" text-anchor="middle" fill="#718096">No data sent to external APIs</text>
+    <text x="1020" y="713" font-size="11" text-anchor="middle" fill="#4A5568">✅ Context-Aware</text>
+    <text x="1020" y="733" font-size="10" text-anchor="middle" fill="#718096">RAG ensures relevant responses</text>
+    <text x="1020" y="753" font-size="11" text-anchor="middle" fill="#4A5568">✅ Safety-Conscious</text>
+    <text x="1020" y="773" font-size="10" text-anchor="middle" fill="#718096">Crisis detection & intervention</text>
+    <text x="1020" y="793" font-size="11" text-anchor="middle" fill="#4A5568">✅ Empathetic</text>
+    <text x="1020" y="813" font-size="10" text-anchor="middle" fill="#718096">Trained on supportive examples</text>
+    <text x="1020" y="833" font-size="9" text-anchor="middle" fill="#A0AEC0" font-style="italic">Not a substitute for professional help</text>
+  </g>
+  
+  <!-- Legend/Footer -->
+  <text x="600" y="885" font-size="11" text-anchor="middle" fill="#718096" font-style="italic">User Query Flow: UI → RAG (Retrieve → Augment → Generate) → Safety Check → Response → UI</text>
+</svg>
