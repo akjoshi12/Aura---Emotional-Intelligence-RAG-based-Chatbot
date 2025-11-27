@@ -60,7 +60,8 @@ Working Diagram
 
 ![Working Diagram](Working_Diagram.png)
 
-! [Working Diagram Inforgraphic Style] (working_diagram2.png)
+
+![Working Diagram Inforgraphic Style](working_diagram2.png)
 
 
 ## Tech Stack
